@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    background: #eeeeee;
+    overflow: hidden;
+  }
+
+canvas {   
+    display : block;   
+    /* margin : 100px auto; */
+    border : 2px solid black;
+} 
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    gap: 20px;
+  }
+  
+#game-container {
+    /* Define width or allow flex-grow to distribute space */
+    /* flex: 1; Example: takes up equal space */
+    /* display : block;   */
+    /* margin : 100px auto; */
+    /*padding: 10px;*/
+  }
+  
+#text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    height:100vh;
+    gap: 20px;
+  }
+
+.basic-text {
+    font-family: 'Times New Roman', Times, Georgia, serif, sans-serif;
+    font-size: 16px;
+}
+
+/*
+#game-container {
+    border : 20px solid black;
+}
+*/  
