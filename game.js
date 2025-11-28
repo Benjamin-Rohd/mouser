@@ -10,7 +10,7 @@ const config = {
 
   let player, enemies, score = 0, scoreText, active_fl = 0, num_enemies, worldBounds, gameWidth, gameHeight, total_velocity, popSound;
   
-  const difficultyRadios = document.querySelectorAll('input[name="difficulty"]');
+  //const difficultyRadios = document.querySelectorAll('input[name="difficulty"]');
 
   const game = new Phaser.Game(config);
  
@@ -93,7 +93,7 @@ const config = {
     if (active_fl == 1) {
         player.setActive(false).setVisible(false);
         active_fl = 0;
-        popSound.play();
+        playDeathSound();
     }
   }
 
@@ -129,6 +129,26 @@ const config = {
     return {x_pos, y_pos, x_vel, y_vel};
   }
 
+  function updateTotalVelocity() {
+    const selectedRadio = document.querySelector('input[name="difficulty"]:checked').value;
+    if (selectedRadio === "easy") {
+      total_velocity = 150;
+    } else if (selectedRadio === "hard") {
+      total_velocity = 250;
+    } else {
+      total_velocity = 200;
+    }
+  }
+
+  function playDeathSound() {
+    //const mute = document.querySelector('input[name="mute"]:checked').value;
+    const mute = document.getElementById("mute");
+    if (!mute.checked) {
+      popSound.play();
+    }
+  }
+
+
  /*  // Function to get the selected difficulty value
   function getSelectedDifficulty() {
     for (const radio of difficultyRadios) {
@@ -153,18 +173,6 @@ const config = {
     });
   }); */
 
-  function updateTotalVelocity() {
-    const selectedRadio = document.querySelector('input[name="difficulty"]:checked').value;
-    if (selectedRadio === "easy") {
-      total_velocity = 150;
-    } else if (selectedRadio === "hard") {
-      total_velocity = 250;
-    } else {
-      total_velocity = 200;
-    }
-  }
-
-  
 
 // generate new enemies if there are less than the max
    /*while (num_enemies < max_enemies) {
